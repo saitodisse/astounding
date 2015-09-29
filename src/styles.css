@@ -1,0 +1,58 @@
+body: {
+    font-family: 'Vollkorn', serif;
+}
+
+button.btn {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.2em;
+    font-style: italic;
+    padding: 7px 22px;
+}
+
+button.btn {
+    margin: 0 15px 0 0;
+}
+
+.buttonsTop {
+    margin: 32px 0;
+}
+
+
+h1 {
+    font-family: 'Vollkorn', serif;
+    font-size: 2.9em;
+}
+
+span {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.3em;
+}
+
+input#new-post {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.2em;
+    padding: 7px 16px;
+}
+
+a {
+    font-size: 1.2em;
+    font-family: 'Vollkorn', serif;
+}
+
+span#post-count {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.3em;   float: right;
+    padding-right: 7px;
+    color: #3D6588;
+}
+
+button.btn.btn-danger {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.1em;   font-style: italic;
+    padding: 2px 10px 0px 7px;
+    float: right;
+    color: #fff;
+    background-color: #B2605E;
+    border-color: #A06160;
+    margin: 0 -3px 0 0;
+}
