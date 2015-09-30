@@ -7,7 +7,7 @@ let setAllPosts = function(input, state) {
     let post = {
       $ref: ref,
       isSaving: false,
-      title: posts[key].title,
+      text: posts[key].text,
       id: posts[key].id
     };
     state.set('nextRef', ref + 1);

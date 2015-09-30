@@ -8,7 +8,7 @@ let savePost = function (input, state, output) {
 	request
 		.put(utils_get_rethink_server_ngrok() + '/post/new')
 		.send({
-			title: post.title
+			text: post.text
 		})
 		.set('Accept', 'application/json')
 		.end(function(err, res){

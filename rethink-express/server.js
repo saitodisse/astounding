@@ -15,7 +15,8 @@ var type = thinky.type;
 // Create the model
 var Post = thinky.createModel('posts', {
   id: type.string(),
-  title: type.string(),
+  text: type.string(),
+  htmlResult: type.string(),
   createdAt: type.date().default(r.now())
 });
 

@@ -15,9 +15,13 @@ class AddPost extends React.Component {
     this.props.signals.newPostSubmitted();
   }
 
+  buttonClicked(event) {
+    /**/console.log('\n>>---------\n event:\n', event, '\n>>---------\n');/*-debug-*/
+  }
+
   setNewPostTitle(event) {
     this.props.signals.newPostTitleChanged({
-      title: event.target.value
+      text: event.target.value
     });
   }
 
@@ -29,7 +33,7 @@ class AddPost extends React.Component {
         onSubmit={this.addPost.bind(this)}>
          <div className="form-group">
             <div className="col-sm-10">
-              <input
+              <textarea
                 className="form-control"
                 id="new-post"
                 autoComplete="off"
@@ -38,6 +42,10 @@ class AddPost extends React.Component {
                 value={this.props.newPostTitle}
                 onChange={this.setNewPostTitle.bind(this)}
               />
+              <button
+                className="bnt bnt-standard"
+                onClick={this.buttonClicked}
+              >save</button>
             </div>
           </div>
       </form>
