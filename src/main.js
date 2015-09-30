@@ -18,7 +18,7 @@ import savePost from './actions/savePost.js';
 import updatePost from './actions/updatePost.js';
 import removeAllPosts from './actions/removeAllPosts.js';
 import loadFromServer from './actions/loadFromServer.js';
-import setAllPosts from './actions/setAllPosts.js';
+import loadEachPost from './actions/loadEachPost.js';
 import setVisiblePosts from './actions/setVisiblePosts.js';
 
 // Signals
@@ -26,7 +26,7 @@ controller.signal('routeChanged',
   removeAllPosts,
   [
     loadFromServer, {
-      success: [setAllPosts]
+      success: [loadEachPost]
     }
   ],
   setCounters,
@@ -59,7 +59,16 @@ controller.signal('removePostClicked',
 );
 
 controller.signal('editPostClicked',
-  setCurrentPost
+  setCurrentPost,
+  removePostStarting,
+  setVisiblePosts,
+  [
+    removePostFromServer, {
+      success: [removePost]
+    }
+  ],
+  setCounters,
+  setVisiblePosts
 );
 
 // ROUTER

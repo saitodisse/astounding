@@ -8,22 +8,17 @@ import {Decorator as Cerebral} from 'cerebral-react';
 })
 class AddPost extends React.Component {
   addPost(event) {
-
     event.preventDefault();
-
     // this.props.signals.newPostTextChanged({
     //   text: React.findDOMNode(this.refs.post).value
     // });
+    // var textContent = React.findDOMNode(this.refs.post).value;
 
-    var textContent = React.findDOMNode(this.refs.post).value;
-
-    if(textContent.length === 0) {
+    if(this.props.newPostText === 0) {
       return;
     }
 
-    this.props.signals.newPostSubmitted({
-      text: textContent
-    });
+    this.props.signals.newPostSubmitted();
   }
 
   onPostTextAreaChange(event) {

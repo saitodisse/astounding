@@ -7,7 +7,10 @@ module.exports = {
     host: 'http://rethink-express.dev.azk.io',
     db: 'posts_cerebral'
   },
-  rethinkdb_server_ngrok: {
-    api: 'http://rethink-express-ngrok.dev.azk.io/api'
-  },
+  initial_text: [
+    '### [TITLE](URL)',
+    '',
+    'DESCRIPTION',
+    '',
+  ].join('\n')
 };

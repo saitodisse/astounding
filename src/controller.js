@@ -1,5 +1,6 @@
 import Controller from 'cerebral';
-import Model from 'cerebral-baobab'
+import Model from 'cerebral-baobab';
+import config from './config.js';
 
 const state = {
   nextRef: 0,
@@ -17,7 +18,7 @@ const state = {
       });
     }
   }),
-  newPostText: '',
+  newPostText: config.initial_text,
   isSaving: false,
   isRemoving: false
 };

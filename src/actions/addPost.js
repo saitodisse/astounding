@@ -1,5 +1,6 @@
 var Remarkable = require('remarkable');
 var hljs = require('highlight.js');
+import config from '../config.js';
 
 var md = new Remarkable({
   highlight: function (str, lang) {
@@ -22,12 +23,12 @@ let addPost = function(input, state, output) {
   let post = {
     $ref: ref,
     isSaving: true,
-    text: input.text,
-    htmlResult: md.render(input.text)
+    text: state.get('newPostText'),
+    htmlResult: md.render(state.get('newPostText'))
   };
 
   state.set(['posts', ref], post);
-  state.set('newPostText', '');
+  state.set('newPostText', config.initial_text);
   state.set('nextRef', ref + 1);
 
   output({

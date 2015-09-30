@@ -13,13 +13,13 @@ systems({
   'astounding': {
     // Dependent systems
     depends: ['rethink-express'],
-    image: {'docker': 'iojs:latest'},
+    image: {'docker': 'node:latest'},
     provision: [
       'npm install'
     ],
     workdir: '/azk/#{manifest.dir}',
     shell: '/bin/bash',
-    command: 'npm run deploy && npm start',
+    command: 'npm start',
     wait: 30,
     mounts: {
       '/azk/#{manifest.dir}': path('.'),

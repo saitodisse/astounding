@@ -1,8 +1,8 @@
-let setAllPosts = function(input, state) {
+let loadEachPost = function(input, state) {
 
   var posts = input.posts;
   var keys = Object.keys(posts);
-  var all_posts = keys.map((key) => {
+  keys.map((key) => {
     var ref = state.get('nextRef');
     let post = {
       $ref: ref,
@@ -18,4 +18,4 @@ let setAllPosts = function(input, state) {
 
 };
 
-export default setAllPosts;
+export default loadEachPost;
