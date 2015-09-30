@@ -1,7 +1,7 @@
 {
   "name": "astounding",
-  "version": "0.1.0",
-  "description": "post manager with cerebral controller",
+  "version": "0.1.1",
+  "description": "url manager with markdown and comments",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --host 0.0.0.0 --content-base src --config webpack.config.js",
     "deploy": "webpack --config webpack.production.config.js",

@@ -1,4 +1,6 @@
-## post cerebral
+# astounding
+
+## url manager with markdown and comments
 
 Simples list example using [cerebral controller](https://github.com/christianalfoni/cerebral)
 
@@ -12,22 +14,10 @@ How to run with [azk](http://www.azk.io/):
 azk restart -R
 ```
 
-- [astounding dev](http://astounding.dev.azk.io)
+- [astounding local web site](http://astounding.dev.azk.io)
     + dev server (for devs, with webpack/hot/dev-server)
-- [post caddy](http://post-caddy.dev.azk.io)
-    + local prod
-- [post caddy + ngrok](http://post-caddy-ngrok.dev.azk.io)
-    + ngrok exposed prod (you can send the link for your friends)
 
 ----------------------
-
-![gliffy diagram](./github_assets/gliffy diagram.png)
-
-see architecture details on [Azkfile.js](https://github.com/saitodisse/astounding/blob/master/Azkfile.js)
-
-----------------------
-
-![azk status](./github_assets/azk_status.png)
 
 see architecture details on [Azkfile.js](https://github.com/saitodisse/astounding/blob/master/Azkfile.js)
 
