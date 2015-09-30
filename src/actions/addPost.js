@@ -22,12 +22,12 @@ let addPost = function(input, state, output) {
   let post = {
     $ref: ref,
     isSaving: true,
-    text: state.get('newPostTitle'),
-    htmlResult: md.render(state.get('newPostTitle'))
+    text: input.text,
+    htmlResult: md.render(input.text)
   };
 
   state.set(['posts', ref], post);
-  state.set('newPostTitle', '');
+  state.set('newPostText', '');
   state.set('nextRef', ref + 1);
 
   output({

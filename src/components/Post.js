@@ -6,11 +6,6 @@ class Post extends React.Component {
   render() {
     return (
       <li className='list-group-item'>
-        <button
-          className="btn btn-danger"
-          disabled={this.props.post && (this.props.post.isSaving || this.props.post.isRemoving)}
-          onClick={() => this.props.signals.removePostClicked({ ref: this.props.post.$ref })}>
-        del</button>
 
         <div dangerouslySetInnerHTML={ {__html: this.props.post.htmlResult} } />
 
@@ -21,6 +16,19 @@ class Post extends React.Component {
         {this.props.post.isRemoving ?
           <small> (removing)</small> :
           null }
+
+        <div className="text-right post-footer-buttons">
+          <button
+            className="btn btn-standard btn-xs"
+            disabled={this.props.post && (this.props.post.isSaving || this.props.post.isRemoving)}
+            onClick={() => this.props.signals.editPostClicked({ ref: this.props.post.$ref })}>
+          edit</button>
+          <button
+            className="btn btn-standard btn-xs"
+            disabled={this.props.post && (this.props.post.isSaving || this.props.post.isRemoving)}
+            onClick={() => this.props.signals.removePostClicked({ ref: this.props.post.$ref })}>
+          del</button>
+        </div>
 
       </li>
     );

@@ -2,6 +2,49 @@
 systems({
 
   /////////////////////////////////////////////////
+  /// astounding: main web app
+  /// ------------
+  /// Save url and comments
+  /// - serves a webpack-dev-server
+  /// - build a production ready version on dist folder
+  ///
+  /// uses cerebral controller - https://github.com/christianalfoni/cerebral
+  /////////////////////////////////////////////////
+  'astounding': {
+    // Dependent systems
+    depends: ['rethink-express'],
+    image: {'docker': 'iojs:latest'},
+    provision: [
+      'npm install'
+    ],
+    workdir: '/azk/#{manifest.dir}',
+    shell: '/bin/bash',
+    command: 'npm run deploy && npm start',
+    wait: 30,
+    mounts: {
+      '/azk/#{manifest.dir}': path('.'),
+      // '/azk/#{manifest.dir}/dist': path('./dist'),
+      '/azk/#{manifest.dir}/node_modules': persistent('#{manifest.dir}/node_modules')
+    },
+    scalable: {'default': 1},
+    http: {
+      domains: [ '#{system.name}.#{azk.default_domain}' ]
+    },
+    ports: {
+      http: '8080/tcp'
+    },
+    envs: {
+      NODE_ENV: 'dev',
+      HOST_NAME: '#{system.name}.#{azk.default_domain}',
+      // Make sure that the PORT value is the same as the one
+      // in ports/http below, and that it's also the same
+      // if you're setting it in a .env file
+      PORT: '8080',
+      PATH: 'node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    }
+  },
+
+  /////////////////////////////////////////////////
   /// rethink-db
   /// ----------
   /// RethinkDB is the open-source, scalable database that
@@ -32,7 +75,7 @@ systems({
       // http://docs.azk.io/en/reference/azkfilejs/mounts.html#persistent
       '/data': persistent('#{system.name}/data')
     },
-    wait: 10,
+    wait: 30,
     http: {
       domains: [ '#{system.name}.#{azk.default_domain}' ]
     },
@@ -80,49 +123,6 @@ systems({
     },
     export_envs: {
       APP_URL: '#{azk.default_domain}:#{net.port.http}'
-    }
-  },
-
-  /////////////////////////////////////////////////
-  /// astounding: main web app
-  /// ------------
-  /// Save url and comments
-  /// - serves a webpack-dev-server
-  /// - build a production ready version on dist folder
-  ///
-  /// uses cerebral controller - https://github.com/christianalfoni/cerebral
-  /////////////////////////////////////////////////
-  'astounding': {
-    // Dependent systems
-    depends: ['rethink-express'],
-    image: {'docker': 'azukiapp/node'},
-    provision: [
-      'npm install'
-    ],
-    workdir: '/azk/#{manifest.dir}',
-    shell: '/bin/bash',
-    command: 'npm run deploy && npm start',
-    wait: 30,
-    mounts: {
-      '/azk/#{manifest.dir}': path('.'),
-      // '/azk/#{manifest.dir}/dist': path('./dist'),
-      '/azk/#{manifest.dir}/node_modules': persistent('#{manifest.dir}/node_modules')
-    },
-    scalable: {'default': 1},
-    http: {
-      domains: [ '#{system.name}.#{azk.default_domain}' ]
-    },
-    ports: {
-      http: '8080/tcp'
-    },
-    envs: {
-      NODE_ENV: 'dev',
-      HOST_NAME: '#{system.name}.#{azk.default_domain}',
-      // Make sure that the PORT value is the same as the one
-      // in ports/http below, and that it's also the same
-      // if you're setting it in a .env file
-      PORT: '8080',
-      PATH: 'node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     }
   },
 

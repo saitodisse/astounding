@@ -8,6 +8,7 @@ let setAllPosts = function(input, state) {
       $ref: ref,
       isSaving: false,
       text: posts[key].text,
+      htmlResult: posts[key].htmlResult,
       id: posts[key].id
     };
     state.set('nextRef', ref + 1);

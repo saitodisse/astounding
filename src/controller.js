@@ -17,9 +17,10 @@ const state = {
       });
     }
   }),
-  newPostTitle: '',
+  newPostText: '',
   isSaving: false,
-  isRemoving: false
+  isRemoving: false,
+  onChangeTextArea: function(e) {console.log(e.target.value)}
 };
 
 const model = Model(state);

@@ -8,10 +8,11 @@ import CerebralRouter from 'cerebral-router';
 
 // Actions
 import addPost from './actions/addPost.js';
+import setCurrentPost from './actions/setCurrentPost.js';
 import removePostStarting from './actions/removePostStarting.js';
 import removePost from './actions/removePost.js';
 import removePostFromServer from './actions/removePostFromServer.js';
-import setNewPostTitle from './actions/setNewPostTitle.js';
+import setNewPostText from './actions/setNewPostText.js';
 import setCounters from './actions/setCounters.js';
 import savePost from './actions/savePost.js';
 import updatePost from './actions/updatePost.js';
@@ -32,7 +33,7 @@ controller.signal('routeChanged',
   setVisiblePosts
 );
 
-controller.signal('newPostTitleChanged', setNewPostTitle);
+controller.signal('newPostTextChanged', setNewPostText);
 
 controller.signal('newPostSubmitted',
   addPost,
@@ -55,6 +56,10 @@ controller.signal('removePostClicked',
   ],
   setCounters,
   setVisiblePosts
+);
+
+controller.signal('editPostClicked',
+  setCurrentPost
 );
 
 // ROUTER

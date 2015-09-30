@@ -23,7 +23,7 @@ var Post = thinky.createModel('posts', {
 // Ensure that an index createdAt exists
 Post.ensureIndex('createdAt');
 
-//CORS middleware
+// CORS middleware
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

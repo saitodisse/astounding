@@ -15,7 +15,6 @@ class PostsList extends React.Component {
       <section id="main">
         <ul className="list-group">
           {Object.keys(this.props.posts)
-            .reverse()
             .map(this.renderPost.bind(this))}
         </ul>
       </section>

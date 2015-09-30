@@ -20,11 +20,14 @@ class App extends React.Component {
         <section id="postapp">
           <header id="header">
             <h1>Posts</h1>
-            <AddPost/>
           </header>
 
           {Object.keys(this.props.posts).length ? <PostsList/> : null}
           {Object.keys(this.props.posts).length ? <PostsFooter/> : null}
+
+          <hr/>
+
+          <AddPost/>
         </section>
       </div>
     );

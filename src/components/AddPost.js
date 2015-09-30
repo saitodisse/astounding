@@ -3,27 +3,37 @@ import {Decorator as Cerebral} from 'cerebral-react';
 
 @Cerebral({
   isSaving: ['isSaving'],
-  newPostTitle: ['newPostTitle']
+  newPostText: ['newPostText'],
+  //onChangeTextArea: ['onChangeTextArea']
 })
 class AddPost extends React.Component {
   addPost(event) {
+
     event.preventDefault();
-    if(this.props.newPostTitle.length === 0) {
+
+    // this.props.signals.newPostTextChanged({
+    //   text: React.findDOMNode(this.refs.post).value
+    // });
+
+    var textContent = React.findDOMNode(this.refs.post).value;
+
+    if(textContent.length === 0) {
       return;
     }
 
-    this.props.signals.newPostSubmitted();
+    this.props.signals.newPostSubmitted({
+      text: textContent
+    });
   }
 
-  buttonClicked(event) {
-    /**/console.log('\n>>---------\n event:\n', event, '\n>>---------\n');/*-debug-*/
-  }
-
-  setNewPostTitle(event) {
-    this.props.signals.newPostTitleChanged({
+  onPostTextAreaChange(event) {
+    this.props.signals.newPostTextChanged(true, {
       text: event.target.value
     });
   }
+
+  // value={this.props.newPostText}
+  // onChange={this.setNewPostText.bind(this)}
 
   render() {
     return (
@@ -35,15 +45,17 @@ class AddPost extends React.Component {
             <div className="col-sm-10">
               <textarea
                 className="form-control"
+                rows="10"
                 id="new-post"
+                ref="post"
                 autoComplete="off"
                 placeholder="new post"
                 disabled={this.props.isSaving}
-                value={this.props.newPostTitle}
-                onChange={this.setNewPostTitle.bind(this)}
+                value={this.props.newPostText}
+                onChange={(e) => this.onPostTextAreaChange(e)}
               />
               <button
-                className="bnt bnt-standard"
+                className="btn"
                 onClick={this.buttonClicked}
               >save</button>
             </div>
