@@ -19,8 +19,7 @@ const state = {
   }),
   newPostText: '',
   isSaving: false,
-  isRemoving: false,
-  onChangeTextArea: function(e) {console.log(e.target.value)}
+  isRemoving: false
 };
 
 const model = Model(state);
